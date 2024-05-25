@@ -1,0 +1,57 @@
+.sym-hidden-reflex-proxy-page {
+    position: relative;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    width: 100%;
+    padding: 10px;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -webkit-flex-direction: column;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    -webkit-box-pack: start;
+    -webkit-justify-content: flex-start;
+    -ms-flex-pack: start;
+    justify-content: flex-start;
+    -webkit-box-align: center;
+    -webkit-align-items: center;
+    -ms-flex-align: center;
+    align-items: center;
+    background-color: #fff;
+    color: #333;
+  }
+  
+  .proxy-settings-title-section {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    -webkit-box-pack: center;
+    -webkit-justify-content: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    -webkit-align-items: center;
+    -ms-flex-align: center;
+    align-items: center;
+  }
+  
+  .proxy-settings-title-label {
+    margin-left: 10px;
+    font-size: 16px;
+  }
+  
+  .epic-encrypted-proxy-content {
+    width:100%;
+  }
+
+
+  /* custom css */
+
+  .epic-encrypted-proxy-content, .sym-hidden-reflex-proxy-page, #whitelist {
+    height: 100%;
+  }

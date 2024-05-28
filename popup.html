@@ -6,444 +6,435 @@
     <link rel="stylesheet" href="style.css" />
     <script src="jquery-1.7.2.min.js" type="text/javascript"></script>
     <!-- 
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>Settings</title> -->
-
+      <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+      <title>Settings</title> -->
     <link rel="stylesheet" href="style.css" />
-
     <!-- <script type="text/JavaScript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js" ></script> -->
   </head>
-
   <body class="back">
-    <div class="container">
+    <div class="content" id="headerImage" style="font-size: 16px;font-weight:bolder; color: #8d8d8d;padding-bottom:0.5rem">
+      &nbsp;&nbsp;<img
+        src="/images/epicsmall.png"
+        align="center"
+        height="35"
+        />&nbsp;&nbsp;Epic's encrypted proxy / VPN
+    </div>
+    <div id="invalidUrlDiv">
+      <p>Please Open Valid Website 
+      </p>
+    </div>
+    <div id="agreeTermsConditions" class="agreeTermsConditions container" >
+      <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <title>Terms and Condition</title>
+        <link rel="stylesheet" href="info.css" />
+      </head>
+      <div>
+        <p>
+          Dear Epic Users, our encrypted proxy / VPN over the past ten years
+          without fail has protected us on over a trillion website visits. It's
+          gotten expensive to operate our network which is powered by 100s of
+          servers around the world, and we've been facing security challenges
+          due to attacks and bot abuse. In order to maintain the robust
+          performance and security of the proxy network, we need to store &
+          analyze some anonymized data but never any IP or personal information.
+          We work with third parties to both power and analyze our network and
+          its usage e.g. the encrypted proxy / VPN servers that we exclusively
+          operate are hosted by third party data centers around the world. The
+          excellent news is that our encrypted proxy network will continue to be
+          free, fast and robust, and that we welcome four more countries into
+          our network! Please read our terms & conditions and privacy policy for
+          more detailed information.
+          Please read our
+          <a href="https://epicbrowser.com/tou" target="_blank"
+            ><span>terms & conditions</span></a
+            >
+          and
+          <a href="https://epicbrowser.com/privacy-policy" target="_blank"
+            ><span>privacy policy</span></a
+            >
+          for more detailed information.
+        </p>
+      </div>
+      <div class="action-btn">
+        </br>
+        <div class="decline">
+          <span id="declineButtonTermsCondition" style="cursor: pointer; text-decoration: underline;">
+          <span>decline</span>
+          <span>(disable)</span>
+          </span>
+        </div>
+        <div class="accept" id="acceptButtonTermsCondition">
+          <button>Accept</button>
+        </div>
+      </div>
+    </div>
+    <!-- tootltip -->
+    <div class="container"  id="MainUIforOnOff">
       <!-- Below div not used  -->
       <div
         id="current_domain"
         style="
-          display: none;
-          min-width: 300px;
-          padding-left: 7px;
-          font-size: 20px;
-          padding: 8px;
-          margin: 4px;
-          color: #8d8d8d;
-          margin-top: -35px;
+        display: none;
+        min-width: 300px;
+        padding-left: 7px;
+        font-size: 20px;
+        padding: 8px;
+        margin: 4px;
+        color: #8d8d8d;
+        margin-top: -35px;
         "
-      >
+        >
       </div>
-      
       <div
         class="slot"
         style="
-          margin-top: 2px;
-          min-width: 250px;
-          padding-left: 7px;
-          font-size: 14px;
-          padding: 0px;
-          margin: 0px;
-          color: #8d8d8d;
+        margin-top: 2px;
+        min-width: 250px;
+        padding-left: 7px;
+        font-size: 14px;
+        padding: 0px;
+        margin: 0px;
+        color: #8d8d8d;
         "
-      >
-        <div class="content" style="font-size: 16px; color: #8d8d8d">
-          &nbsp;&nbsp;<img
-            src="/images/epicsmall.png"
-            align="center"
-            height="35"
-          />&nbsp;&nbsp;epic's encrypted proxy / VPN
-        </div>
+        >
         <br />
-
-          
-          
-            <div class="button-proxy" style="margin-top: 0px;">
-              <div class="button" id="plugins" style="font-size: 24px;">
-                  <span id="plugins_Y" onclick="toggleImage()"><img src="./images/on_button.png" alt="On Button"/></span>
-                  <span id="plugins_N" style="display: none;" onclick="toggleImage()"><img src="./images/off_button.png" alt="Off Button"/></span>
-              </div>
-            
-  
-              <div class="sym-hidden-reflex-proxy-popup-inner">
-                <div class="sym-proxy-whitelist">
-                    <div class="div-block-195 toggle-item">
-                        <div class="proxy-text" id="toggle-text" style="color: green; font-size: medium; font-weight: bold;">ENABLED </div>
-                        <div class="toggle-item-yes-no">
-                          <div  class="toggle-item-button selected toggle-on">
-                              <span id="toggle-on" class="yes-no" onclick="toggleButton()"><img src="./images/on_button_small.png" alt="Off Button Small"></span>
-                          </div>
-                          <div class="toggle-item-button unselected toggle-off hidden">
-                              <span id="toggle-off" class="yes-no" onclick="toggleButton()" style="display: none;"><img src="./images/off_button_small.png" alt="On Button Small"></span>
-                          </div>
-                      </div>
-                    </div>
-                    
-                    <div class="proxy-text mr-2" id="link-whitelisted-sites" class="link-normal proxy-text">( all whitelisted sites )</div>
-                </div>
-            </div>
-
+        <div class="button-proxy" style="margin-top: 0px;">
+          <div class="button" id="plugins" style="font-size: 24px;">
+            <span id="plugins_N" ><img src="./images/on_button.png" alt="On Button"/></span>
+            <span id="plugins_Y" style="display: none;"><img src="./images/off_button.png" alt="Off Button"/></span>
           </div>
-        
+          <div class="sym-hidden-reflex-proxy-popup-inner">
+            <div class="toggle-item-label">
+              <div id="current-domain-name"></div>
+            </div>
+            <div class="sym-proxy-whitelist">
+              <div class="toggleControl" style="display: flex;">
+                <div class="toggle-item">
+                  <div class="proxy-text" id="toggle-text" style="color: green; font-size: medium; font-weight: bold;">ENABLED </div>
+                </div>
+                <div class="toggle-item-yes-no">
+                  <div  class="toggle-item-button selected toggle-off">
+                    <span id="toggle-off" class="yes-no" style="display: none;" ><img src="./images/off_button_small.png" alt="Off Button Small"></span>
+                  </div>
+                  <div class="toggle-item-button unselected toggle-on hidden">
+                    <span id="toggle-on" class="yes-no" ><img src="./images/on_button_small.png" alt="On Button Small"></span>
+                  </div>
+                </div>
+              </div>
+             
+            </div>
+            <div class="proxy-text mr-2" id="link-whitelisted-sites" class="link-normal proxy-text" style='cursor:"pointer"'>all whitelisted sites</div>
+          </div>
+        </div>
       </div>
-          
-          
-      
-        
-        <h2 style="background-color: #fff; margin-bottom: 0px; margin-top: -0.5rem">
-          <form style="border: none;">
-            <fieldset style="border: none;">
-              <div class="fieldset-item">
-                <label>
-                  <div align="texttop">
-                    <input
-                      class="radio-input"
-                      type="radio"
-                      name="radSize"
-                      id="eastUSAProxy"
-                      y
-                      value="eastUSA"
-                    />
-                    &nbsp
-                    <img
-                      src="/images/newflags/us.svg"
-                      alt="US East Coast Encrypted Proxy"
-                      width="35"
-                      style="border: 0.5px solid black"
-                    />
-                    <span style="vertical-align: 40%">
-                      &nbsp&nbspUS East Coast (default)
-                    </span>
-                  </div>
-                </label>
-              </div>
-              <br />
-
-              <div class="fieldset-item">
-                <label>
-                  <div align="texttop">
-                    <input
-                      type="radio"
-                      name="radSize"
-                      id="westUSAProxy"
-                      value="westUSA"
-                    />
-                    &nbsp
-                    <img
-                      src="/images/newflags/us.svg"
-                      alt="US Encrypted Proxy"
-                      width="35"
-                      style="border: 0.5px solid black"
-                    />
-                    <span style="vertical-align: 40%">
-                      &nbsp&nbspUS West
-                      Coast&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
-                    </span>
-                  </div>
-                </label>
-              </div>
-              <br />
-
-              <div class="fieldset-item">
-                <label>
-                  <div align="texttop">
-                    <input
-                      type="radio"
-                      name="radSize"
-                      id="CanadaProxy"
-                      value="Canada"
-                    />
-                    &nbsp
-                    <img
-                      src="/images/newflags/ca.svg"
-                      alt="Canada Encrypted Proxy"
-                      width="35"
-                      style="border: 0.5px solid black"
-                    />
-                    <span style="vertical-align: 40%"
-                      >&nbsp&nbspCanada&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
-                    </span>
-                  </div>
-                </label>
-              </div>
-              <br />
-
-              <div class="fieldset-item">
-                <label>
-                  <div align="texttop">
-                    <input
-                      type="radio"
-                      name="radSize"
-                      id="brazil"
-                      value="brazil"
-                    />
-                    &nbsp
-                    <img
-                      src="/images/newflags/br.svg"
-                      alt="Brazil Encrypted Proxy"
-                      width="35"
-                      style="border: 0.5px solid black"
-                    />
-                    <span style="vertical-align: 40%"
-                      >&nbsp&nbspBrazil&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
-                    </span>
-                  </div>
-                </label>
-              </div>
-              <br />
-
-              <div class="fieldset-item">
-                <label>
-                  <div align="texttop">
-                    <input type="radio" name="radSize" id="uk" value="uk" />
-                    &nbsp
-                    <img
-                      src="/images/newflags/gb.svg"
-                      alt="UK Encrypted Proxy"
-                      width="35"
-                      style="border: 0.5px solid black"
-                    />
-                    <span style="vertical-align: 40%"
-                      >&nbsp&nbspUK&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
-                    </span>
-                  </div>
-                </label>
-              </div>
-              <br />
-
-              <div class="fieldset-item">
-                <label>
-                  <div align="texttop">
-                    <input
-                      type="radio"
-                      name="radSize"
-                      id="deProxy"
-                      value="Germany"
-                    />
-                    &nbsp
-                    <img
-                      src="/images/newflags/de.svg"
-                      alt="Germany Encrypted Proxy"
-                      width="35"
-                      style="border: 0.5px solid black"
-                    />
-                    <span style="vertical-align: 40%"
-                      >&nbsp&nbspGermany&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
-                    </span>
-                  </div>
-                </label>
-              </div>
-              <br />
-
-              <div class="fieldset-item">
-                <label>
-                  <div align="texttop">
-                    <input
-                      type="radio"
-                      name="radSize"
-                      id="lyonFranceProxy"
-                      value="FRANCE"
-                    />
-                    &nbsp
-                    <img
-                      src="/images/newflags/fr.svg"
-                      alt="France Encrypted Proxy"
-                      width="35"
-                      style="border: 0.5px solid black"
-                    />
-                    <span style="vertical-align: 40%"
-                      >&nbsp&nbspFrance&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
-                    </span>
-                  </div>
-                </label>
-              </div>
-              <br />
-
-              <div class="fieldset-item">
-                <label>
-                  <div align="texttop">
-                    <input
-                      type="radio"
-                      name="radSize"
-                      id="NetherlandsProxy"
-                      value="NETHERLANDS"
-                    />
-                    &nbsp
-                    <img
-                      src="/images/newflags/nl.svg"
-                      alt="Netherlands Encrypted Proxy"
-                      width="35"
-                      style="border: 0.5px solid black"
-                    />
-                    <span style="vertical-align: 40%"
-                      >&nbsp&nbspNetherlands&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
-                    </span>
-                  </div>
-                </label>
-              </div>
-              <br />
-              
-              <div class="fieldset-item">
-                <label>
-                  <div align="texttop">
-                    <input
-                      type="radio"
-                      name="radSize"
-                      id="singapore"
-                      value="singapore"
-                    />
-                    &nbsp
-                    <img
-                      src="/images/newflags/sg.svg"
-                      alt="Singapore Encrypted Proxy"
-                      width="35"
-                      style="border: 0.5px solid black"
-                    />
-                    <span style="vertical-align: 40%"
-                      >&nbsp&nbspSingapore&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
-                    </span>
-                  </div>
-                </label>
-              </div>
-              <br />
-
-              <div class="fieldset-item">
-                <label>
-                  <div align="texttop">
-                    <input
-                      type="radio"
-                      name="radSize"
-                      id="korea"
-                      value="korea"
-                    />
-                    &nbsp
-                    <img
-                      src="/images/newflags/kr.svg"
-                      alt="Korea Encrypted Proxy"
-                      width="35"
-                      style="border: 0.5px solid black"
-                    />
-                    <span style="vertical-align: 40%"
-                      >&nbsp&nbspKorea&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
-                    </span>
-                  </div>
-                </label>
-              </div>
-              <br />
-
-              <div class="fieldset-item">
-                <label>
-                  <div align="texttop">
-                    <input
-                      type="radio"
-                      name="radSize"
-                      id="japan"
-                      value="japan"
-                    />
-                    &nbsp
-                    <img
-                      src="/images/newflags/jp.svg"
-                      alt="Japan Encrypted Proxy"
-                      width="35"
-                      style="border: 0.5px solid black"
-                    />
-                    <span style="vertical-align: 40%"
-                      >&nbsp&nbspJapan&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
-                    </span>
-                  </div>
-                </label>
-              </div>
-              <br />
-
-              <div class="fieldset-item">
-                <label>
-                  <div align="texttop">
-                    <input
-                      type="radio"
-                      name="radSize"
-                      id="australia"
-                      value="australia"
-                    />
-                    &nbsp <img src="/images/newflags/au.svg" alt="Australia
-                    Encrypted Proxy" width="35"//>
-                    <span style="vertical-align: 40%"
-                      >&nbsp&nbspAustralia&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
-                    </span>
-                  </div>
-                </label>
-              </div>
-            </fieldset>
-          </form>
-        </h2>
     </div>
-      
-      
-    </div>
-
-     <div class="mb5 flex1" id="proxyAllowedWrapper" style="margin-top: -0.5rem;">
-      <div class="sym-hidden-reflex-proxy-popup" style="margin-top: 0px; padding: 0px;">
-        <!-- <div class="sym-hidden-reflex-proxy-popup-inner">
-          <div class="sym-proxy-whitelist">
-            <div class="div-block-195">
-              <div class="proxy-text">Enabled:</div>
-              <div class="ml-5 flex-hori">
-                <div class="proxy-text mr-2">(</div>
-                <div id="link-whitelisted-sites" class="link-normal proxy-text">
-                  whitelisted sites
-                </div>
-                <div class="proxy-text ml-2">):</div>
+    <h2 style="background-color: #fff; margin-bottom: 0px; margin-top: -0.5rem" id="flagContent">
+      <form style="border: none;">
+        <fieldset style="border: none;">
+          <div class="fieldset-item">
+            <label>
+              <div align="texttop">
+                <input
+                  class="radio-input"
+                  type="radio"
+                  name="radSize"
+                  id="eastUSAProxy"
+                  y
+                  value="eastUSA"
+                  />
+                &nbsp
+                <img
+                  src="/images/newflags/us.svg"
+                  alt="US East Coast Encrypted Proxy"
+                  width="35"
+                  style="border: 0.5px solid black"
+                  />
+                <span style="vertical-align: 40%">
+                &nbsp&nbspUS East Coast (default)
+                </span>
               </div>
-            </div>
-
-            <div
-              class="toggle-item"
-              style="width: 100%; margin-right: 18px"
-              id="proxyAllowed"
-            >
-              <div class="toggle-item-label">
-                <div id="current-domain-name"></div>
-              </div>
-
-              <div class="toggle-item-yes-no">
-                <div class="toggle-item-button unselected toggle-off">
-                  <div>No</div>
-                </div>
-                <div class="toggle-item-button selected ml-5 toggle-on">
-                  <div>Yes</div>
-                </div>
-              </div>
-            </div>
+            </label>
           </div>
-        </div> -->
-        <!-- <br /> -->
-
-
-        <a class="tooltip" style="color: slategrey"
-          ><font size="1"
+          <br />
+          <div class="fieldset-item">
+            <label>
+              <div align="texttop">
+                <input
+                  type="radio"
+                  name="radSize"
+                  id="westUSAProxy"
+                  value="westUSA"
+                  />
+                &nbsp
+                <img
+                  src="/images/newflags/us.svg"
+                  alt="US Encrypted Proxy"
+                  width="35"
+                  style="border: 0.5px solid black"
+                  />
+                <span style="vertical-align: 40%">
+                &nbsp&nbspUS West
+                Coast&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+                </span>
+              </div>
+            </label>
+          </div>
+          <br />
+          <div class="fieldset-item">
+            <label>
+              <div align="texttop">
+                <input
+                  type="radio"
+                  name="radSize"
+                  id="CanadaProxy"
+                  value="Canada"
+                  />
+                &nbsp
+                <img
+                  src="/images/newflags/ca.svg"
+                  alt="Canada Encrypted Proxy"
+                  width="35"
+                  style="border: 0.5px solid black"
+                  />
+                <span style="vertical-align: 40%"
+                  >&nbsp&nbspCanada&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+                </span>
+              </div>
+            </label>
+          </div>
+          <br />
+          <div class="fieldset-item">
+            <label>
+              <div align="texttop">
+                <input
+                  type="radio"
+                  name="radSize"
+                  id="brazil"
+                  value="brazil"
+                  />
+                &nbsp
+                <img
+                  src="/images/newflags/br.svg"
+                  alt="Brazil Encrypted Proxy"
+                  width="35"
+                  style="border: 0.5px solid black"
+                  />
+                <span style="vertical-align: 40%"
+                  >&nbsp&nbspBrazil&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+                </span>
+              </div>
+            </label>
+          </div>
+          <br />
+          <div class="fieldset-item">
+            <label>
+              <div align="texttop">
+                <input type="radio" name="radSize" id="uk" value="uk" />
+                &nbsp
+                <img
+                  src="/images/newflags/gb.svg"
+                  alt="UK Encrypted Proxy"
+                  width="35"
+                  style="border: 0.5px solid black"
+                  />
+                <span style="vertical-align: 40%"
+                  >&nbsp&nbspUK&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+                </span>
+              </div>
+            </label>
+          </div>
+          <br />
+          <div class="fieldset-item">
+            <label>
+              <div align="texttop">
+                <input
+                  type="radio"
+                  name="radSize"
+                  id="deProxy"
+                  value="Germany"
+                  />
+                &nbsp
+                <img
+                  src="/images/newflags/de.svg"
+                  alt="Germany Encrypted Proxy"
+                  width="35"
+                  style="border: 0.5px solid black"
+                  />
+                <span style="vertical-align: 40%"
+                  >&nbsp&nbspGermany&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+                </span>
+              </div>
+            </label>
+          </div>
+          <br />
+          <div class="fieldset-item">
+            <label>
+              <div align="texttop">
+                <input
+                  type="radio"
+                  name="radSize"
+                  id="lyonFranceProxy"
+                  value="FRANCE"
+                  />
+                &nbsp
+                <img
+                  src="/images/newflags/fr.svg"
+                  alt="France Encrypted Proxy"
+                  width="35"
+                  style="border: 0.5px solid black"
+                  />
+                <span style="vertical-align: 40%"
+                  >&nbsp&nbspFrance&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+                </span>
+              </div>
+            </label>
+          </div>
+          <br />
+          <div class="fieldset-item">
+            <label>
+              <div align="texttop">
+                <input
+                  type="radio"
+                  name="radSize"
+                  id="NetherlandsProxy"
+                  value="NETHERLANDS"
+                  />
+                &nbsp
+                <img
+                  src="/images/newflags/nl.svg"
+                  alt="Netherlands Encrypted Proxy"
+                  width="35"
+                  style="border: 0.5px solid black"
+                  />
+                <span style="vertical-align: 40%"
+                  >&nbsp&nbspNetherlands&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+                </span>
+              </div>
+            </label>
+          </div>
+          <br />
+          <div class="fieldset-item">
+            <label>
+              <div align="texttop">
+                <input
+                  type="radio"
+                  name="radSize"
+                  id="singapore"
+                  value="singapore"
+                  />
+                &nbsp
+                <img
+                  src="/images/newflags/sg.svg"
+                  alt="Singapore Encrypted Proxy"
+                  width="35"
+                  style="border: 0.5px solid black"
+                  />
+                <span style="vertical-align: 40%"
+                  >&nbsp&nbspSingapore&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+                </span>
+              </div>
+            </label>
+          </div>
+          <br />
+          <div class="fieldset-item">
+            <label>
+              <div align="texttop">
+                <input
+                  type="radio"
+                  name="radSize"
+                  id="korea"
+                  value="korea"
+                  />
+                &nbsp
+                <img
+                  src="/images/newflags/kr.svg"
+                  alt="Korea Encrypted Proxy"
+                  width="35"
+                  style="border: 0.5px solid black"
+                  />
+                <span style="vertical-align: 40%"
+                  >&nbsp&nbspKorea&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+                </span>
+              </div>
+            </label>
+          </div>
+          <br />
+          <div class="fieldset-item">
+            <label>
+              <div align="texttop">
+                <input
+                  type="radio"
+                  name="radSize"
+                  id="japan"
+                  value="japan"
+                  />
+                &nbsp
+                <img
+                  src="/images/newflags/jp.svg"
+                  alt="Japan Encrypted Proxy"
+                  width="35"
+                  style="border: 0.5px solid black"
+                  />
+                <span style="vertical-align: 40%"
+                  >&nbsp&nbspJapan&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+                </span>
+              </div>
+            </label>
+          </div>
+          <br />
+          <div class="fieldset-item">
+            <label>
+              <div align="texttop">
+                <input
+                  type="radio"
+                  name="radSize"
+                  id="australia"
+                  value="australia"
+                  />
+                &nbsp <img src="/images/newflags/au.svg" alt="Australia
+                  Encrypted Proxy" width="35"//>
+                <span style="vertical-align: 40%"
+                  >&nbsp&nbspAustralia&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+                </span>
+              </div>
+            </label>
+          </div>
+        </fieldset>
+      </form>
+    </h2>
+    <div class="mb5 flex1" id="proxyAllowedWrapper" style="margin-top: -0.5rem;">
+      <div class="sym-hidden-reflex-proxy-popup" style="margin-top: 10px; padding: 0px;">
+        <a class="tooltip" style="color: slategrey;"
+          >
+          <font size="1"
             >&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
-            &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
-            how this works / find out more / help</font
-          ><span>
+          &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+          how this works / find out more / help</font
+            >
+          <span>
             <p>
-              
-              <font size="2px">
-                <p></p>
-                <b>Epic's encrypted proxy</b> hides your IP address and
-                location. You will appear to be in the country you select.
-                Encryption and IP masking protects your browsing from hackers,
-                trackers, your ISP and the government. <br /><br />Since you
-                will appear to be in a new location, sites such as Facebook,
-                Gmail and others may require additional authentication. Don't
-                worry that's actually a good sign and more secure.<br /><br />Your
-                browsing speeds may be slightly slower. In case browsing isn't
-                working at all or is very slow, a particular server may be down.
-                Please try a different country or close and re-open Epic to
-                connect to a different node.<br /><br />
-                Unfortunately many sites (primarily to stop bots and data
-                scraping) block access via VPN or encrypted proxy. If a site
-                isn't loading or you get an error, you can now whitelist it by
-                disabling the encrypted proxy via the proxy or umbrella buttons
-                for just that site. After whitelisting a site, refresh the page
-                to try to load it.<br />
-                <p></p>
-              </font>
+              <font size="2px" style="margin-top: 50px;">
+            </p>
+            <b>Epic's encrypted proxy</b> hides your IP address and
+            location. You will appear to be in the country you select.
+            Encryption and IP masking protects your browsing from hackers,
+            trackers, your ISP and the government. <br /><br />Since you
+            will appear to be in a new location, sites such as Facebook,
+            Gmail and others may require additional authentication. Don't
+            worry that's actually a good sign and more secure.<br /><br />Your
+            browsing speeds may be slightly slower. In case browsing isn't
+            working at all or is very slow, a particular server may be down.
+            Please try a different country or close and re-open Epic to
+            connect to a different node.<br /><br />
+            Unfortunately many sites (primarily to stop bots and data
+            scraping) block access via VPN or encrypted proxy. If a site
+            isn't loading or you get an error, you can now whitelist it by
+            disabling the encrypted proxy via the proxy or umbrella buttons
+            for just that site. After whitelisting a site, refresh the page
+            to try to load it.<br />
+            <p></p>
+            </font>
             </p>
           </span>
         </a>
@@ -451,81 +442,4 @@
     </div>
   </body>
 </html>
-
 <script src="toggle.js" type="text/javascript"></script>
-
-<!-- <div class="proxy-container">
-            <div class="proxy">
-              <h3>Enabled : </h3>
-                <div class="proxy-btn" id="proxyAllowed">
-                  <div id="current-domain-name">
-                    <button>Yes</button>
-                    <button>No</button>
-                  </div>
-                </div>
-              </div>
-
-
-              <div class="proxy-sites" >
-                <a href="#" id="link-whitelisted-sites">( all white-listed sites )</a>
-              </div>
-            </div>
-
-          </div> -->
-
-
-          <!-- <div class="row" style="margin: 0px; padding: 0px;">
-            <div class="button" id="plugins" onclick="toggleButton()">
-              <button
-                id="plugins_Y"
-                class="active"
-                style="
-                  background-color: green;
-                  padding: 1.5rem;
-                  border-radius: 1rem solid #006769;
-                  border-radius: 0.5rem;
-                  color: #fff;
-                  font-weight: bolder;
-                  font-size: large;
-                "
-              >
-                ON&nbsp;
-              </button>
-              <button
-                id="plugins_N"
-                style="
-                  display: none;
-                  background-color: red;
-                  padding: 1.5rem;
-                  border-radius: 1rem solid #940000;
-                  border-radius: 0.5rem;
-                  color: #fff;
-                  font-weight: bolder;
-                  font-size: large;
-                "
-              >
-                OFF
-              </button>
-            </div>         
-          
-            <div class="sym-hidden-reflex-proxy-popup-inner">
-              <div class="sym-proxy-whitelist">
-                <div class="div-block-195">
-                  <div class="proxy-text" id="proxy-status">Disabled:</div>
-                  <div class="toggle-item" id="proxyAllowed">
-                    <div class="toggle-item-yes-no" onclick="toggleProxy()">
-                      <div class="toggle-item-button toggle-on" id="toggleYes">
-                        <div>Yes</div>
-                      </div>
-                      <div class="toggle-item-button toggle-off" id="toggleNo">
-                        <div>No</div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div class="proxy-text mr-2" id="link-whitelisted-sites">
-                  (all whitelisted sites)
-                </div>
-              </div>
-            </div>
-          </div> -->

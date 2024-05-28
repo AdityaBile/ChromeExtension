@@ -94,10 +94,15 @@ async function toggleProxyUIOn() {
   promisify((r) =>
     chrome.extension.sendMessage({ greeting: "enableProxy", url: host }, r)
   ); //CONTINUE
-  document.getElementById("plugins_Y").style.color = "black";
-  document.getElementById("plugins_N").style.color = "#B5B5B5";
-  document.getElementById("plugins_N").style.backgroundColor = "white";
-  document.getElementById("plugins_Y").style.backgroundColor = "#59BA59";
+
+  var onButton = document.getElementById("plugins_Y");
+  var offButton = document.getElementById("plugins_N");
+  var popupInner = document.querySelector(
+    ".sym-hidden-reflex-proxy-popup-inner"
+  );
+  onButton.style.display = "none";
+  offButton.style.display = "block";
+  popupInner.style.display = "block";
 
   $("input[type=radio]").attr("disabled", false);
   var countryId = $("input[type=radio][name=radSize]:checked").attr("id");
@@ -123,10 +128,30 @@ function toggleProxyUIOff() {
   ); //CONTINUE
   setItem("proxyMode", "off");
 
-  document.getElementById("plugins_Y").style.color = "#B5B5B5";
-  document.getElementById("plugins_N").style.color = "black";
-  document.getElementById("plugins_N").style.backgroundColor = "#D47D7D";
-  document.getElementById("plugins_Y").style.backgroundColor = "white";
+  var onButton = document.getElementById("plugins_Y");
+  var offButton = document.getElementById("plugins_N");
+  var popupInner = document.querySelector(
+    ".sym-hidden-reflex-proxy-popup-inner"
+  );
+  onButton.style.display = "block";
+  offButton.style.display = "none";
+  popupInner.style.display = "none";
+}
+function toggleWhitelistedSiteOn(host) {
+  return promisify((r) =>
+    chrome.extension.sendMessage(
+      { greeting: "toggleWhitelistedSite", value: true, url: host },
+      r
+    )
+  );
+}
+function toggleWhitelistedSiteOff(host) {
+  return promisify((r) =>
+    chrome.extension.sendMessage(
+      { greeting: "toggleWhitelistedSite", value: false, url: host },
+      r
+    )
+  );
 }
 
 function pageLoaded() {
@@ -148,6 +173,24 @@ function pageLoaded() {
   } else {
     toggleProxyUIOn();
   }
+  // host = document.querySelector("#current-domain-name").textContent;
+
+  // let v = promisify((r) =>
+  //   chrome.extension.sendMessage(
+  //     { greeting: "isWhitelistedSite", url: host },
+  //     r
+  //   )
+  // );
+
+  // if (v) {
+  //   console.warn("isWhitelistedSite", v, "off ");
+  //   toggleButton();
+  //   toggleWhitelistedSiteOn(host);
+  // } else {
+  //   console.warn("isWhitelistedSite", v, "onn ");
+  //   toggleButton();
+  //   toggleWhitelistedSiteOff(host);
+  // }
 
   chrome.tabs.getSelected(null, function (tab) {
     $("input[name=radSize]:radio").change(function () {
@@ -1387,38 +1430,103 @@ function isWebPage(url) {
 }
 
 async function loadUI() {
+  console.log("loadUI startign");
+
+  document.querySelector("#invalidUrlDiv").style.display = "none";
   const tab = await promisify((r) => chrome.tabs.getSelected(null, r));
   if (!isWebPage(tab.url)) {
     document.querySelector("#proxyAllowedWrapper").style.display = "none";
+    document.querySelector("#MainUIforOnOff").style.display = "none";
+    document.querySelector("#flagContent").style.display = "none";
+    document.querySelector("#agreeTermsConditions").style.display = "none";
+    document.querySelector("#headerImage").style.display = "none";
+    document.querySelector("#invalidUrlDiv").style.display = null;
+
     return;
+  } else {
+    chrome.storage.local.get(["agreeTermsCondition"], function (result) {
+      console.log("result", result);
+      if (!result.agreeTermsCondition) {
+        toggleProxyUIOff();
+        console.warn("agreeTermsCondition not set");
+        document.querySelector("#proxyAllowedWrapper").style.display = "none";
+        document.querySelector("#MainUIforOnOff").style.display = "none";
+        document.querySelector("#flagContent").style.display = "none";
+
+        console.log("loadUI startign");
+        document
+          .querySelector("#declineButtonTermsCondition")
+          .addEventListener("click", function () {
+            console.log("declineButtonTermsCondition clicked");
+            console.log("stoopging the proxy");
+            toggleProxyUIOff();
+            window.close();
+          });
+
+        document
+          .querySelector("#acceptButtonTermsCondition")
+          .addEventListener("click", function () {
+            console.log("acceptButtonTermsCondition clicked");
+            console.log("starting the proxy");
+            toggleProxyUIOn();
+            chrome.storage.local.set({ agreeTermsCondition: true });
+            console.log("loading ui again");
+            window.close();
+          });
+      } else {
+        document
+          .querySelector("#link-whitelisted-sites")
+          ?.addEventListener("click", () => {
+            chrome.tabs.create({ url: "options.html" });
+          });
+
+        document.querySelector("#agreeTermsConditions").style.display = "none";
+        document.querySelector("#proxyAllowedWrapper").style.display = null;
+        document.querySelector("#MainUIforOnOff").style.display = null;
+
+        document
+          .querySelector("#plugins_Y")
+          .addEventListener("click", function () {
+            updateToggleButton("proxyAllowed", false);
+            toggleWhitelistedSiteOn();
+            toggleImage();
+          });
+        document
+          .querySelector("#plugins_N")
+          .addEventListener("click", function () {
+            updateToggleButton("proxyAllowed", true);
+            toggleWhitelistedSiteOff();
+            toggleImage();
+          });
+
+        console.log("loadUI startign with no ");
+      }
+    });
   }
+
   const host = getHostFromUrl(tab.url);
   let proxyId = chrome.runtime.id;
   //set current domain name label
   setCurrentDomainNameLabel(host);
 
-  function toggleWhitelistedSiteOn() {
-    return promisify((r) =>
-      chrome.extension.sendMessage(
-        { greeting: "toggleWhitelistedSite", value: true, url: host },
-        r
-      )
-    );
-  }
-  function toggleWhitelistedSiteOff() {
-    return promisify((r) =>
-      chrome.extension.sendMessage(
-        { greeting: "toggleWhitelistedSite", value: false, url: host },
-        r
-      )
-    );
-  }
   // #agad - whitelisted sites
-  document
-    .querySelector("#link-whitelisted-sites")
-    ?.addEventListener("click", () => {
-      chrome.tabs.create({ url: "options.html" });
-    });
+  // document
+  //   .querySelector("#link-whitelisted-sites")
+  //   ?.addEventListener("click", () => {
+  //     chrome.tabs.create({ url: "options.html" });
+  //   });
+
+  document.querySelector("#toggle-off").addEventListener("click", function () {
+    // updateToggleButton("proxyAllowed", false);
+    toggleButton();
+    toggleWhitelistedSiteOff(host);
+  });
+
+  document.querySelector("#toggle-on").addEventListener("click", function () {
+    // updateToggleButton("proxyAllowed", true);
+    toggleButton();
+    toggleWhitelistedSiteOn(host);
+  });
 
   let v = await promisify((r) =>
     chrome.extension.sendMessage(
@@ -1428,23 +1536,9 @@ async function loadUI() {
   );
 
   updateToggleButton("proxyAllowed", !v);
-
-  document
-    .querySelector("#proxyAllowed .toggle-off")
-    .addEventListener("click", function () {
-      updateToggleButton("proxyAllowed", false);
-      toggleWhitelistedSiteOn();
-    });
-
-  document
-    .querySelector("#proxyAllowed .toggle-on")
-    .addEventListener("click", function () {
-      updateToggleButton("proxyAllowed", true);
-      toggleWhitelistedSiteOff();
-    });
 }
 
-// ************ Button Toggle On/Off *************
+// ON-OFF proxy vpn
 
 function toggleImage() {
   var onButton = document.getElementById("plugins_Y");
@@ -1456,30 +1550,123 @@ function toggleImage() {
   if (onButton.style.display === "none") {
     onButton.style.display = "block";
     offButton.style.display = "none";
-    popupInner.style.display = "block";
+    popupInner.style.display = "none";
   } else {
     onButton.style.display = "none";
     offButton.style.display = "block";
-    popupInner.style.display = "none";
+    popupInner.style.display = "block";
   }
 }
+
+// Enable - disable proxy
+
+document.addEventListener("DOMContentLoaded", function () {
+  chrome.tabs.query({ active: true, currentWindow: true }, function (tabs) {
+    var currentUrl = tabs[0].url;
+    chrome.storage.sync.get(currentUrl, function (result) {
+      var toggleState = result[currentUrl];
+      var onButton = document.getElementById("toggle-on");
+      var offButton = document.getElementById("toggle-off");
+      var toggleText = document.getElementById("toggle-text");
+
+      // If no state is found, default to "enabled"
+      if (!toggleState) {
+        toggleState = "enabled";
+        var state = {};
+        state[currentUrl] = "enabled";
+        chrome.storage.sync.set(state);
+      }
+
+      if (toggleState === "enabled") {
+        onButton.style.display = null;
+        offButton.style.display = "none";
+        toggleText.innerHTML = "ENABLED";
+        toggleText.style.color = "green";
+      } else {
+        onButton.style.display = "none";
+        offButton.style.display = null;
+        toggleText.innerHTML = "DISABLED";
+        toggleText.style.color = "red";
+      }
+    });
+  });
+});
 
 function toggleButton() {
   var onButton = document.getElementById("toggle-on");
   var offButton = document.getElementById("toggle-off");
   var toggleText = document.getElementById("toggle-text");
 
-  if (onButton.style.display === "none") {
-    onButton.style.display = "block";
-    offButton.style.display = "none";
-    toggleText.innerHTML = "ENABLED";
-    toggleText.style.color = "green";
-  } else {
-    onButton.style.display = "none";
-    offButton.style.display = "block";
-    toggleText.innerHTML = "DISABLED";
-    toggleText.style.color = "red";
+  // Get the current tab's URL
+  chrome.tabs.query({ active: true, currentWindow: true }, function (tabs) {
+    var currentUrl = tabs[0].url;
+
+    // Toggle the button and text based on the current state
+    if (onButton.style.display === "none") {
+      onButton.style.display = null;
+      offButton.style.display = "none";
+      toggleText.innerHTML = "ENABLED";
+      toggleText.style.color = "green";
+
+      // Save the state to Chrome storage
+      var state = {};
+      state[currentUrl] = "enabled";
+      chrome.storage.sync.set(state);
+    } else {
+      onButton.style.display = "none";
+      offButton.style.display = null;
+      toggleText.innerHTML = "DISABLED";
+      toggleText.style.color = "red";
+
+      // Save the state to Chrome storage
+      var state = {};
+      state[currentUrl] = "disabled";
+      chrome.storage.sync.set(state);
+    }
+  });
+}
+
+//  Highlight border of selected radio fielditem
+
+const radioInputs = document.querySelectorAll('input[type="radio"]');
+
+function updateBorders() {
+  // Remove border from all fieldset items
+  document.querySelectorAll(".fieldset-item").forEach((item) => {
+    item.style.border = "1px solid #8eace6";
+  });
+
+  // Add border to the selected fieldset item
+  const checkedRadio = document.querySelector('input[type="radio"]:checked');
+  if (checkedRadio) {
+    checkedRadio.closest(".fieldset-item").style.border = "4px solid #537FE7";
   }
 }
+
+// Initialize borders on page load
+document.addEventListener("DOMContentLoaded", updateBorders);
+
+// Add event listeners to radio buttons
+radioInputs.forEach((radio) => {
+  radio.addEventListener("change", updateBorders);
+});
+
+// function toggleButton() {
+//   var onButton = document.getElementById("toggle-on");
+//   var offButton = document.getElementById("toggle-off");
+//   var toggleText = document.getElementById("toggle-text");
+
+//   if (onButton.style.display === "none") {
+//     onButton.style.display = null;
+//     offButton.style.display = "none";
+//     toggleText.innerHTML = "ENABLED";
+//     toggleText.style.color = "green";
+//   } else {
+//     onButton.style.display = "none";
+//     offButton.style.display = null;
+//     toggleText.innerHTML = "DISABLED";
+//     toggleText.style.color = "red";
+//   }
+// }
 
 loadUI();

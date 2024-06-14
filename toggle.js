@@ -137,6 +137,7 @@ function toggleProxyUIOff() {
   offButton.style.display = "none";
   popupInner.style.display = "none";
 }
+
 function toggleWhitelistedSiteOn(host) {
   return promisify((r) =>
     chrome.extension.sendMessage(
@@ -173,24 +174,6 @@ function pageLoaded() {
   } else {
     toggleProxyUIOn();
   }
-  // host = document.querySelector("#current-domain-name").textContent;
-
-  // let v = promisify((r) =>
-  //   chrome.extension.sendMessage(
-  //     { greeting: "isWhitelistedSite", url: host },
-  //     r
-  //   )
-  // );
-
-  // if (v) {
-  //   console.warn("isWhitelistedSite", v, "off ");
-  //   toggleButton();
-  //   toggleWhitelistedSiteOn(host);
-  // } else {
-  //   console.warn("isWhitelistedSite", v, "onn ");
-  //   toggleButton();
-  //   toggleWhitelistedSiteOff(host);
-  // }
 
   chrome.tabs.getSelected(null, function (tab) {
     $("input[name=radSize]:radio").change(function () {
@@ -409,7 +392,7 @@ var proxy = {
       pacScript: {
         data:
           "function FindProxyForURL(url, host) {\n" +
-          "if(host == '*.search.yahoo.com' || host == 'search.yahoo.com' || host == 'ys.epicbrowser.com' || host == 'searchyahoo.epicbrowser.com' || host == 'nt.epicbrowser.com' || host == 'updates.epic browser.com') \n" +
+          "if(host == '*.search.yahoo.com' || host == 'search.yahoo.com' || host == '*.epicbrowser.com') \n" +
           "return 'DIRECT;';\n" +
           "else if(host == 'www.epicsearch.in') \n" +
           "return 'HTTPS use10.theepicbrowser.com:30442; DIRECT;';\n" +
@@ -428,7 +411,7 @@ var proxy = {
       pacScript: {
         data:
           "function FindProxyForURL(url, host) {\n" +
-          "if(host == '*.search.yahoo.com' || host == 'search.yahoo.com' || host == 'ys.epicbrowser.com' || host == 'searchyahoo.epicbrowser.com' || host == 'nt.epicbrowser.com' || host == 'updates.epic browser.com') \n" +
+          "if(host == '*.search.yahoo.com' || host == 'search.yahoo.com' || host == '*.epicbrowser.com') \n" +
           "return 'DIRECT;';\n" +
           "else if(host == 'www.epicsearch.in') \n" +
           "return 'HTTPS use11.theepicbrowser.com:30442; DIRECT';\n" +
@@ -446,7 +429,7 @@ var proxy = {
       pacScript: {
         data:
           "function FindProxyForURL(url, host) {\n" +
-          "if(host == '*.search.yahoo.com' || host == 'search.yahoo.com' || host == 'ys.epicbrowser.com' || host == 'searchyahoo.epicbrowser.com' || host == 'nt.epicbrowser.com' || host == 'updates.epic browser.com') \n" +
+          "if(host == '*.search.yahoo.com' || host == 'search.yahoo.com' || host == '*.epicbrowser.com') \n" +
           "return 'DIRECT;';\n" +
           "else if(host == 'www.epicsearch.in') \n" +
           "return 'HTTPS use12.theepicbrowser.com:30442; DIRECT';\n" +
@@ -464,7 +447,7 @@ var proxy = {
       pacScript: {
         data:
           "function FindProxyForURL(url, host) {\n" +
-          "if(host == '*.search.yahoo.com' || host == 'search.yahoo.com' || host == 'ys.epicbrowser.com' || host == 'searchyahoo.epicbrowser.com' || host == 'nt.epicbrowser.com' || host == 'updates.epic browser.com') \n" +
+          "if(host == '*.search.yahoo.com' || host == 'search.yahoo.com' || host == '*.epicbrowser.com') \n" +
           "return 'DIRECT;';\n" +
           "else if(host == 'www.epicsearch.in') \n" +
           "return 'HTTPS use13.theepicbrowser.com:30442; DIRECT';\n" +
@@ -482,7 +465,7 @@ var proxy = {
       pacScript: {
         data:
           "function FindProxyForURL(url, host) {\n" +
-          "if(host == '*.search.yahoo.com' || host == 'search.yahoo.com' || host == 'ys.epicbrowser.com' || host == 'searchyahoo.epicbrowser.com' || host == 'nt.epicbrowser.com' || host == 'updates.epic browser.com') \n" +
+          "if(host == '*.search.yahoo.com' || host == 'search.yahoo.com' || host == '*.epicbrowser.com') \n" +
           "return 'DIRECT;';\n" +
           "else if(host == 'www.epicsearch.in') \n" +
           "return 'HTTPS use14.theepicbrowser.com:30442; DIRECT';\n" +
@@ -503,7 +486,7 @@ var proxy = {
       pacScript: {
         data:
           "function FindProxyForURL(url, host) {\n" +
-          "if(host == '*.search.yahoo.com' || host == 'search.yahoo.com' || host == 'ys.epicbrowser.com' || host == 'searchyahoo.epicbrowser.com' || host == 'nt.epicbrowser.com' || host == 'updates.epic browser.com') \n" +
+          "if(host == '*.search.yahoo.com' || host == 'search.yahoo.com' || host == '*.epicbrowser.com') \n" +
           "return 'DIRECT;';\n" +
           "else if(host == 'www.epicsearch.in') \n" +
           "return 'HTTPS usw10.theepicbrowser.com:41763;DIRECT;';\n" +
@@ -521,7 +504,7 @@ var proxy = {
       pacScript: {
         data:
           "function FindProxyForURL(url, host) {\n" +
-          "if(host == '*.search.yahoo.com' || host == 'search.yahoo.com' || host == 'ys.epicbrowser.com' || host == 'searchyahoo.epicbrowser.com' || host == 'nt.epicbrowser.com' || host == 'updates.epic browser.com') \n" +
+          "if(host == '*.search.yahoo.com' || host == 'search.yahoo.com' || host == '*.epicbrowser.com') \n" +
           "return 'DIRECT;';\n" +
           "else if(host == 'www.epicsearch.in') \n" +
           "return 'HTTPS usw11.theepicbrowser.com:41763;DIRECT;';\n" +
@@ -539,7 +522,7 @@ var proxy = {
       pacScript: {
         data:
           "function FindProxyForURL(url, host) {\n" +
-          "if(host == '*.search.yahoo.com' || host == 'search.yahoo.com' || host == 'ys.epicbrowser.com' || host == 'searchyahoo.epicbrowser.com' || host == 'nt.epicbrowser.com' || host == 'updates.epic browser.com') \n" +
+          "if(host == '*.search.yahoo.com' || host == 'search.yahoo.com' || host == '*.epicbrowser.com') \n" +
           "return 'DIRECT;';\n" +
           "else if(host == 'www.epicsearch.in') \n" +
           "return 'HTTPS usw12.theepicbrowser.com:41763;DIRECT;';\n" +
@@ -557,7 +540,7 @@ var proxy = {
       pacScript: {
         data:
           "function FindProxyForURL(url, host) {\n" +
-          "if(host == '*.search.yahoo.com' || host == 'search.yahoo.com' || host == 'ys.epicbrowser.com' || host == 'searchyahoo.epicbrowser.com' || host == 'nt.epicbrowser.com' || host == 'updates.epic browser.com') \n" +
+          "if(host == '*.search.yahoo.com' || host == 'search.yahoo.com' || host == '*.epicbrowser.com') \n" +
           "return 'DIRECT;';\n" +
           "else if(host == 'www.epicsearch.in') \n" +
           "return 'HTTPS usw13.theepicbrowser.com:41763;DIRECT;';\n" +
@@ -578,7 +561,7 @@ var proxy = {
       pacScript: {
         data:
           "function FindProxyForURL(url, host) {\n" +
-          "if(host == '*.search.yahoo.com' || host == 'search.yahoo.com' || host == 'ys.epicbrowser.com' || host == 'searchyahoo.epicbrowser.com' || host == 'nt.epicbrowser.com' || host == 'updates.epic browser.com') \n" +
+          "if(host == '*.search.yahoo.com' || host == 'search.yahoo.com' || host == '*.epicbrowser.com') \n" +
           "return 'DIRECT;';\n" +
           "else if(host == 'www.epicsearch.in') \n" +
           "return 'HTTPS ca10.epicbrowser.net:43065;DIRECT;';\n" +
@@ -596,7 +579,7 @@ var proxy = {
       pacScript: {
         data:
           "function FindProxyForURL(url, host) {\n" +
-          "if(host == '*.search.yahoo.com' || host == 'search.yahoo.com' || host == 'ys.epicbrowser.com' || host == 'searchyahoo.epicbrowser.com' || host == 'nt.epicbrowser.com' || host == 'updates.epic browser.com') \n" +
+          "if(host == '*.search.yahoo.com' || host == 'search.yahoo.com' || host == '*.epicbrowser.com') \n" +
           "return 'DIRECT;';\n" +
           "else if(host == 'www.epicsearch.in') \n" +
           "return 'HTTPS ca11.epicbrowser.net:43065;DIRECT;';\n" +
@@ -616,7 +599,7 @@ var proxy = {
       pacScript: {
         data:
           "function FindProxyForURL(url, host) {\n" +
-          "if(host == '*.search.yahoo.com' || host == 'search.yahoo.com' || host == 'ys.epicbrowser.com' || host == 'searchyahoo.epicbrowser.com' || host == 'nt.epicbrowser.com' || host == 'updates.epic browser.com') \n" +
+          "if(host == '*.search.yahoo.com' || host == 'search.yahoo.com' || host == '*.epicbrowser.com') \n" +
           "return 'DIRECT;';\n" +
           "else if(host == 'www.epicsearch.in') \n" +
           "return 'HTTPS ca12.epicbrowser.net:43065;DIRECT;';\n" +
@@ -634,7 +617,7 @@ var proxy = {
       pacScript: {
         data:
           "function FindProxyForURL(url, host) {\n" +
-          "if(host == '*.search.yahoo.com' || host == 'search.yahoo.com' || host == 'ys.epicbrowser.com' || host == 'searchyahoo.epicbrowser.com' || host == 'nt.epicbrowser.com' || host == 'updates.epic browser.com') \n" +
+          "if(host == '*.search.yahoo.com' || host == 'search.yahoo.com' || host == '*.epicbrowser.com') \n" +
           "return 'DIRECT;';\n" +
           "else if(host == 'www.epicsearch.in') \n" +
           "return 'HTTPS ca13.epicbrowser.net:43065;DIRECT;';\n" +
@@ -655,7 +638,7 @@ var proxy = {
       pacScript: {
         data:
           "function FindProxyForURL(url, host) {\n" +
-          "if(host == '*.search.yahoo.com' || host == 'search.yahoo.com' || host == 'ys.epicbrowser.com' || host == 'searchyahoo.epicbrowser.com' || host == 'nt.epicbrowser.com' || host == 'updates.epic browser.com') \n" +
+          "if(host == '*.search.yahoo.com' || host == 'search.yahoo.com' || host == '*.epicbrowser.com') \n" +
           "return 'DIRECT;';\n" +
           "else if(host == 'www.epicsearch.in') \n" +
           "return 'HTTPS uk10.epicbrowser.net:34974;DIRECT;';\n" +
@@ -673,7 +656,7 @@ var proxy = {
       pacScript: {
         data:
           "function FindProxyForURL(url, host) {\n" +
-          "if(host == '*.search.yahoo.com' || host == 'search.yahoo.com' || host == 'ys.epicbrowser.com' || host == 'searchyahoo.epicbrowser.com' || host == 'nt.epicbrowser.com' || host == 'updates.epic browser.com') \n" +
+          "if(host == '*.search.yahoo.com' || host == 'search.yahoo.com' || host == '*.epicbrowser.com') \n" +
           "return 'DIRECT;';\n" +
           "else if(host == 'www.epicsearch.in') \n" +
           "return 'HTTPS uk11.epicbrowser.net:34974;DIRECT;';\n" +
@@ -691,7 +674,7 @@ var proxy = {
       pacScript: {
         data:
           "function FindProxyForURL(url, host) {\n" +
-          "if(host == '*.search.yahoo.com' || host == 'search.yahoo.com' || host == 'ys.epicbrowser.com' || host == 'searchyahoo.epicbrowser.com' || host == 'nt.epicbrowser.com' || host == 'updates.epic browser.com') \n" +
+          "if(host == '*.search.yahoo.com' || host == 'search.yahoo.com' || host == '*.epicbrowser.com') \n" +
           "return 'DIRECT;';\n" +
           "else if(host == 'www.epicsearch.in') \n" +
           "return 'HTTPS uk12.epicbrowser.net:34974;DIRECT;';\n" +
@@ -709,7 +692,7 @@ var proxy = {
       pacScript: {
         data:
           "function FindProxyForURL(url, host) {\n" +
-          "if(host == '*.search.yahoo.com' || host == 'search.yahoo.com' || host == 'ys.epicbrowser.com' || host == 'searchyahoo.epicbrowser.com' || host == 'nt.epicbrowser.com' || host == 'updates.epic browser.com') \n" +
+          "if(host == '*.search.yahoo.com' || host == 'search.yahoo.com' || host == '*.epicbrowser.com') \n" +
           "return 'DIRECT;';\n" +
           "else if(host == 'www.epicsearch.in') \n" +
           "return 'HTTPS uk13.epicbrowser.net:34974;DIRECT;';\n" +
@@ -730,7 +713,7 @@ var proxy = {
       pacScript: {
         data:
           "function FindProxyForURL(url, host) {\n" +
-          "if(host == '*.search.yahoo.com' || host == 'search.yahoo.com' || host == 'ys.epicbrowser.com' || host == 'searchyahoo.epicbrowser.com' || host == 'nt.epicbrowser.com' || host == 'updates.epic browser.com') \n" +
+          "if(host == '*.search.yahoo.com' || host == 'search.yahoo.com' || host == '*.epicbrowser.com') \n" +
           "return 'DIRECT;';\n" +
           "else if(host == 'www.epicsearch.in') \n" +
           "return 'HTTPS de10.theepicbrowser.com:42874;DIRECT;';\n" +
@@ -748,7 +731,7 @@ var proxy = {
       pacScript: {
         data:
           "function FindProxyForURL(url, host) {\n" +
-          "if(host == '*.search.yahoo.com' || host == 'search.yahoo.com' || host == 'ys.epicbrowser.com' || host == 'searchyahoo.epicbrowser.com' || host == 'nt.epicbrowser.com' || host == 'updates.epic browser.com') \n" +
+          "if(host == '*.search.yahoo.com' || host == 'search.yahoo.com' || host == '*.epicbrowser.com') \n" +
           "return 'DIRECT;';\n" +
           "else if(host == 'www.epicsearch.in') \n" +
           "return 'HTTPS de11.theepicbrowser.com:42874;DIRECT;';\n" +
@@ -766,7 +749,7 @@ var proxy = {
       pacScript: {
         data:
           "function FindProxyForURL(url, host) {\n" +
-          "if(host == '*.search.yahoo.com' || host == 'search.yahoo.com' || host == 'ys.epicbrowser.com' || host == 'searchyahoo.epicbrowser.com' || host == 'nt.epicbrowser.com' || host == 'updates.epic browser.com') \n" +
+          "if(host == '*.search.yahoo.com' || host == 'search.yahoo.com' || host == '*.epicbrowser.com') \n" +
           "return 'DIRECT;';\n" +
           "else if(host == 'www.epicsearch.in') \n" +
           "return 'HTTPS de12.theepicbrowser.com:42874;DIRECT;';\n" +
@@ -788,7 +771,7 @@ var proxy = {
   //          mode: "pac_script",
   //          pacScript: {
   //             data: "function FindProxyForURL(url, host) {\n" +
-  //              "if(host == '*.search.yahoo.com' || host == 'search.yahoo.com' || host == 'ys.epicbrowser.com' || host == 'searchyahoo.epicbrowser.com' || host == 'nt.epicbrowser.com' || host == 'updates.epic browser.com') \n" +
+  //              "if(host == '*.search.yahoo.com' || host == 'search.yahoo.com' || host == '*.epicbrowser.com') \n" +
   //                   "return 'DIRECT;';\n" +
   //              "else if(host == 'www.epicsearch.in') \n" +
   //                   "return 'fr.epicbrowser.com:8888;DIRECT;';\n" +
@@ -808,7 +791,7 @@ var proxy = {
       pacScript: {
         data:
           "function FindProxyForURL(url, host) {\n" +
-          "if(host == '*.search.yahoo.com' || host == 'search.yahoo.com' || host == 'ys.epicbrowser.com' || host == 'searchyahoo.epicbrowser.com' || host == 'nt.epicbrowser.com' || host == 'updates.epic browser.com') \n" +
+          "if(host == '*.search.yahoo.com' || host == 'search.yahoo.com' || host == '*.epicbrowser.com') \n" +
           "return 'DIRECT;';\n" +
           "else if(host == 'www.epicsearch.in') \n" +
           "return 'HTTPS fr10.epicbrowser.net:42784;DIRECT;';\n" +
@@ -826,7 +809,7 @@ var proxy = {
       pacScript: {
         data:
           "function FindProxyForURL(url, host) {\n" +
-          "if(host == '*.search.yahoo.com' || host == 'search.yahoo.com' || host == 'ys.epicbrowser.com' || host == 'searchyahoo.epicbrowser.com' || host == 'nt.epicbrowser.com' || host == 'updates.epic browser.com') \n" +
+          "if(host == '*.search.yahoo.com' || host == 'search.yahoo.com' || host == '*.epicbrowser.com') \n" +
           "return 'DIRECT;';\n" +
           "else if(host == 'www.epicsearch.in') \n" +
           "return 'HTTPS fr11.epicbrowser.net:42784;DIRECT;';\n" +
@@ -847,7 +830,7 @@ var proxy = {
       pacScript: {
         data:
           "function FindProxyForURL(url, host) {\n" +
-          "if(host == '*.search.yahoo.com' || host == 'search.yahoo.com' || host == 'ys.epicbrowser.com' || host == 'searchyahoo.epicbrowser.com' || host == 'nt.epicbrowser.com' || host == 'updates.epic browser.com') \n" +
+          "if(host == '*.search.yahoo.com' || host == 'search.yahoo.com' || host == '*.epicbrowser.com') \n" +
           "return 'DIRECT;';\n" +
           "else if(host == 'www.epicsearch.in') \n" +
           "return 'HTTPS ne10.epicbrowser.net:43074;DIRECT;';\n" +
@@ -865,7 +848,7 @@ var proxy = {
       pacScript: {
         data:
           "function FindProxyForURL(url, host) {\n" +
-          "if(host == '*.search.yahoo.com' || host == 'search.yahoo.com' || host == 'ys.epicbrowser.com' || host == 'searchyahoo.epicbrowser.com' || host == 'nt.epicbrowser.com' || host == 'updates.epic browser.com') \n" +
+          "if(host == '*.search.yahoo.com' || host == 'search.yahoo.com' || host == '*.epicbrowser.com') \n" +
           "return 'DIRECT;';\n" +
           "else if(host == 'www.epicsearch.in') \n" +
           "return 'HTTPS ne11.epicbrowser.net:43074;DIRECT;';\n" +
@@ -886,7 +869,7 @@ var proxy = {
       pacScript: {
         data:
           "function FindProxyForURL(url, host) {\n" +
-          "if(host == '*.search.yahoo.com' || host == 'search.yahoo.com' || host == 'ys.epicbrowser.com' || host == 'searchyahoo.epicbrowser.com' || host == 'nt.epicbrowser.com' || host == 'updates.epic browser.com') \n" +
+          "if(host == '*.search.yahoo.com' || host == 'search.yahoo.com' || host == '*.epicbrowser.com') \n" +
           "return 'DIRECT;';\n" +
           "else if(host == 'www.epicsearch.in') \n" +
           "return 'HTTPS sg10.epicbrowser.net:42478;DIRECT;';\n" +
@@ -905,7 +888,7 @@ var proxy = {
       pacScript: {
         data:
           "function FindProxyForURL(url, host) {\n" +
-          "if(host == '*.search.yahoo.com' || host == 'search.yahoo.com' || host == 'ys.epicbrowser.com' || host == 'searchyahoo.epicbrowser.com' || host == 'nt.epicbrowser.com' || host == 'updates.epic browser.com') \n" +
+          "if(host == '*.search.yahoo.com' || host == 'search.yahoo.com' || host == '*.epicbrowser.com') \n" +
           "return 'DIRECT;';\n" +
           "else if(host == 'www.epicsearch.in') \n" +
           "return 'HTTPS sg11.epicbrowser.net:42478;DIRECT;';\n" +
@@ -925,7 +908,7 @@ var proxy = {
       pacScript: {
         data:
           "function FindProxyForURL(url, host) {\n" +
-          "if(host == '*.search.yahoo.com' || host == 'search.yahoo.com' || host == 'ys.epicbrowser.com' || host == 'searchyahoo.epicbrowser.com' || host == 'nt.epicbrowser.com' || host == 'updates.epic browser.com') \n" +
+          "if(host == '*.search.yahoo.com' || host == 'search.yahoo.com' || host == '*.epicbrowser.com') \n" +
           "return 'DIRECT;';\n" +
           "else if(host == 'www.epicsearch.in') \n" +
           "return 'HTTPS au10.epicbrowser.net:43074;DIRECT;';\n" +
@@ -944,7 +927,7 @@ var proxy = {
       pacScript: {
         data:
           "function FindProxyForURL(url, host) {\n" +
-          "if(host == '*.search.yahoo.com' || host == 'search.yahoo.com' || host == 'ys.epicbrowser.com' || host == 'searchyahoo.epicbrowser.com' || host == 'nt.epicbrowser.com' || host == 'updates.epic browser.com') \n" +
+          "if(host == '*.search.yahoo.com' || host == 'search.yahoo.com' || host == '*.epicbrowser.com') \n" +
           "return 'DIRECT;';\n" +
           "else if(host == 'www.epicsearch.in') \n" +
           "return 'HTTPS au11.epicbrowser.net:43074;DIRECT;';\n" +
@@ -964,7 +947,7 @@ var proxy = {
       pacScript: {
         data:
           "function FindProxyForURL(url, host) {\n" +
-          "if(host == '*.search.yahoo.com' || host == 'search.yahoo.com' || host == 'ys.epicbrowser.com' || host == 'searchyahoo.epicbrowser.com' || host == 'nt.epicbrowser.com' || host == 'updates.epic browser.com') \n" +
+          "if(host == '*.search.yahoo.com' || host == 'search.yahoo.com' || host == '*.epicbrowser.com') \n" +
           "return 'DIRECT;';\n" +
           "else if(host == 'www.epicsearch.in') \n" +
           "return 'HTTPS jp10.epicbrowser.net:43074;DIRECT;';\n" +
@@ -983,7 +966,7 @@ var proxy = {
       pacScript: {
         data:
           "function FindProxyForURL(url, host) {\n" +
-          "if(host == '*.search.yahoo.com' || host == 'search.yahoo.com' || host == 'ys.epicbrowser.com' || host == 'searchyahoo.epicbrowser.com' || host == 'nt.epicbrowser.com' || host == 'updates.epic browser.com') \n" +
+          "if(host == '*.search.yahoo.com' || host == 'search.yahoo.com' || host == '*.epicbrowser.com') \n" +
           "return 'DIRECT;';\n" +
           "else if(host == 'www.epicsearch.in') \n" +
           "return 'HTTPS jp11.epicbrowser.net:43074;DIRECT;';\n" +
@@ -1003,7 +986,7 @@ var proxy = {
       pacScript: {
         data:
           "function FindProxyForURL(url, host) {\n" +
-          "if(host == '*.search.yahoo.com' || host == 'search.yahoo.com' || host == 'ys.epicbrowser.com' || host == 'searchyahoo.epicbrowser.com' || host == 'nt.epicbrowser.com' || host == 'updates.epic browser.com') \n" +
+          "if(host == '*.search.yahoo.com' || host == 'search.yahoo.com' || host == '*.epicbrowser.com') \n" +
           "return 'DIRECT;';\n" +
           "else if(host == 'www.epicsearch.in') \n" +
           "return 'HTTPS kr10.epicbrowser.net:43074;DIRECT;';\n" +
@@ -1022,7 +1005,7 @@ var proxy = {
       pacScript: {
         data:
           "function FindProxyForURL(url, host) {\n" +
-          "if(host == '*.search.yahoo.com' || host == 'search.yahoo.com' || host == 'ys.epicbrowser.com' || host == 'searchyahoo.epicbrowser.com' || host == 'nt.epicbrowser.com' || host == 'updates.epic browser.com') \n" +
+          "if(host == '*.search.yahoo.com' || host == 'search.yahoo.com' || host == '*.epicbrowser.com') \n" +
           "return 'DIRECT;';\n" +
           "else if(host == 'www.epicsearch.in') \n" +
           "return 'HTTPS kr11.epicbrowser.net:43074;DIRECT;';\n" +
@@ -1042,7 +1025,7 @@ var proxy = {
       pacScript: {
         data:
           "function FindProxyForURL(url, host) {\n" +
-          "if(host == '*.search.yahoo.com' || host == 'search.yahoo.com' || host == 'ys.epicbrowser.com' || host == 'searchyahoo.epicbrowser.com' || host == 'nt.epicbrowser.com' || host == 'updates.epic browser.com') \n" +
+          "if(host == '*.search.yahoo.com' || host == 'search.yahoo.com' || host == '*.epicbrowser.com') \n" +
           "return 'DIRECT;';\n" +
           "else if(host == 'www.epicsearch.in') \n" +
           "return 'HTTPS br10.epicbrowser.net:43074;DIRECT;';\n" +
@@ -1061,7 +1044,7 @@ var proxy = {
       pacScript: {
         data:
           "function FindProxyForURL(url, host) {\n" +
-          "if(host == '*.search.yahoo.com' || host == 'search.yahoo.com' || host == 'ys.epicbrowser.com' || host == 'searchyahoo.epicbrowser.com' || host == 'nt.epicbrowser.com' || host == 'updates.epic browser.com') \n" +
+          "if(host == '*.search.yahoo.com' || host == 'search.yahoo.com' || host == '*.epicbrowser.com') \n" +
           "return 'DIRECT;';\n" +
           "else if(host == 'www.epicsearch.in') \n" +
           "return 'HTTPS br11.epicbrowser.net:43074;DIRECT;';\n" +
@@ -1135,7 +1118,7 @@ var proxy = {
       pacScript: {
         data:
           "function FindProxyForURL(url, host) {\n" +
-          "if(host == '*.search.yahoo.com' || host == 'search.yahoo.com' || host == 'ys.epicbrowser.com' || host == 'searchyahoo.epicbrowser.com' || host == 'nt.epicbrowser.com' || host == 'updates.epic browser.com') \n" +
+          "if(host == '*.search.yahoo.com' || host == 'search.yahoo.com' || host == '*.epicbrowser.com') \n" +
           "return 'DIRECT;';\n" +
           "else if(host == 'www.epicsearch.in') \n" +
           "return 'HTTPS www.faisla.in:44300;DIRECT;';\n" +
@@ -1149,7 +1132,7 @@ var proxy = {
       pacScript: {
         data:
           "function FindProxyForURL(url, host) {\n" +
-          "if(host == '*.search.yahoo.com' || host == 'search.yahoo.com' || host == 'ys.epicbrowser.com' || host == 'searchyahoo.epicbrowser.com' || host == 'nt.epicbrowser.com' || host == 'updates.epic browser.com') \n" +
+          "if(host == '*.search.yahoo.com' || host == 'search.yahoo.com' || host == '*.epicbrowser.com') \n" +
           "return 'DIRECT;';\n" +
           "else if(host == 'www.epicsearch.in') \n" +
           "return 'HTTPS epicbrowser.net:44300;DIRECT;';\n" +
@@ -1163,7 +1146,7 @@ var proxy = {
       pacScript: {
         data:
           "function FindProxyForURL(url, host) {\n" +
-          "if(host == '*.search.yahoo.com' || host == 'search.yahoo.com' || host == 'ys.epicbrowser.com' || host == 'searchyahoo.epicbrowser.com' || host == 'nt.epicbrowser.com' || host == 'updates.epic browser.com') \n" +
+          "if(host == '*.search.yahoo.com' || host == 'search.yahoo.com' || host == '*.epicbrowser.com') \n" +
           "return 'DIRECT;';\n" +
           "else if(host == 'www.epicsearch.in') \n" +
           "return 'HTTPS www.odecide.com:44300;DIRECT;';\n" +
@@ -1429,80 +1412,81 @@ function isWebPage(url) {
   return url.match(/^http(?:s)?:\/\//) != null;
 }
 
+// Set proxyOff when installed
+// chrome.runtime.onInstalled.addListener(() => {
+//   chrome.storage.local.set({ agreeTermsCondition: false, proxyMode: "off" });
+// });
+
+//Load ui
 async function loadUI() {
   console.log("loadUI startign");
-
-  document.querySelector("#invalidUrlDiv").style.display = "none";
+  // toggleProxyUIOff();
   const tab = await promisify((r) => chrome.tabs.getSelected(null, r));
-  if (!isWebPage(tab.url)) {
-    document.querySelector("#proxyAllowedWrapper").style.display = "none";
-    document.querySelector("#MainUIforOnOff").style.display = "none";
-    document.querySelector("#flagContent").style.display = "none";
-    document.querySelector("#agreeTermsConditions").style.display = "none";
-    document.querySelector("#headerImage").style.display = "none";
-    document.querySelector("#invalidUrlDiv").style.display = null;
 
-    return;
-  } else {
-    chrome.storage.local.get(["agreeTermsCondition"], function (result) {
-      console.log("result", result);
-      if (!result.agreeTermsCondition) {
-        toggleProxyUIOff();
-        console.warn("agreeTermsCondition not set");
-        document.querySelector("#proxyAllowedWrapper").style.display = "none";
-        document.querySelector("#MainUIforOnOff").style.display = "none";
-        document.querySelector("#flagContent").style.display = "none";
+  chrome.storage.local.get(["agreeTermsCondition"], function (result) {
+    console.log("result", result);
 
-        console.log("loadUI startign");
-        document
-          .querySelector("#declineButtonTermsCondition")
-          .addEventListener("click", function () {
-            console.log("declineButtonTermsCondition clicked");
-            console.log("stoopging the proxy");
-            toggleProxyUIOff();
-            window.close();
-          });
+    if (!result.agreeTermsCondition) {
+      toggleProxyUIOff();
+      console.warn("agreeTermsCondition not set");
+      document.querySelector("#proxyAllowedWrapper").style.display = "none";
+      document.querySelector("#MainUIforOnOff").style.display = "none";
+      document.querySelector("#flagContent").style.display = "none";
 
-        document
-          .querySelector("#acceptButtonTermsCondition")
-          .addEventListener("click", function () {
-            console.log("acceptButtonTermsCondition clicked");
-            console.log("starting the proxy");
-            toggleProxyUIOn();
-            chrome.storage.local.set({ agreeTermsCondition: true });
-            console.log("loading ui again");
-            window.close();
-          });
-      } else {
-        document
-          .querySelector("#link-whitelisted-sites")
-          ?.addEventListener("click", () => {
-            chrome.tabs.create({ url: "options.html" });
-          });
+      console.log("loadUI startign");
+      document
+        .querySelector("#declineButtonTermsCondition")
+        .addEventListener("click", function () {
+          console.log("declineButtonTermsCondition clicked");
+          console.log("stoopging the proxy");
+          toggleProxyUIOff();
+          window.close();
+        });
 
-        document.querySelector("#agreeTermsConditions").style.display = "none";
-        document.querySelector("#proxyAllowedWrapper").style.display = null;
-        document.querySelector("#MainUIforOnOff").style.display = null;
+      document
+        .querySelector("#acceptButtonTermsCondition")
+        .addEventListener("click", function () {
+          console.log("acceptButtonTermsCondition clicked");
+          console.log("starting the proxy");
+          toggleProxyUIOn();
+          chrome.storage.local.set({ agreeTermsCondition: true });
+          console.log("loading ui again");
+          window.close();
+        });
+    } else {
+      document
+        .querySelector("#link-whitelisted-sites")
+        ?.addEventListener("click", () => {
+          chrome.tabs.create({ url: "options.html" });
+        });
 
-        document
-          .querySelector("#plugins_Y")
-          .addEventListener("click", function () {
-            updateToggleButton("proxyAllowed", false);
-            toggleWhitelistedSiteOn();
-            toggleImage();
-          });
-        document
-          .querySelector("#plugins_N")
-          .addEventListener("click", function () {
-            updateToggleButton("proxyAllowed", true);
-            toggleWhitelistedSiteOff();
-            toggleImage();
-          });
+      document.querySelector("#agreeTermsConditions").style.display = "none";
+      document.querySelector("#proxyAllowedWrapper").style.display = null;
+      document.querySelector("#MainUIforOnOff").style.display = null;
 
-        console.log("loadUI startign with no ");
-      }
-    });
-  }
+      document
+        .querySelector("#plugins_Y")
+        .addEventListener("click", function () {
+          updateToggleButton("proxyAllowed", false);
+          toggleWhitelistedSiteOn();
+          toggleImage();
+        });
+      document
+        .querySelector("#plugins_N")
+        .addEventListener("click", function () {
+          updateToggleButton("proxyAllowed", true);
+          toggleWhitelistedSiteOff();
+          toggleImage();
+        });
+
+      console.log("loadUI startign with no ");
+    }
+
+    document.getElementById("currentDomainControls").style.display = null;
+    if (!isWebPage(tab.url)) {
+      document.getElementById("currentDomainControls").style.display = "none";
+    }
+  });
 
   const host = getHostFromUrl(tab.url);
   let proxyId = chrome.runtime.id;
@@ -1562,9 +1546,11 @@ function toggleImage() {
 
 document.addEventListener("DOMContentLoaded", function () {
   chrome.tabs.query({ active: true, currentWindow: true }, function (tabs) {
-    var currentUrl = tabs[0].url;
-    chrome.storage.sync.get(currentUrl, function (result) {
-      var toggleState = result[currentUrl];
+    var currentUrl = new URL(tabs[0].url);
+    var domain = currentUrl.hostname; // Extract the domain part
+
+    chrome.storage.sync.get(domain, function (result) {
+      var toggleState = result[domain];
       var onButton = document.getElementById("toggle-on");
       var offButton = document.getElementById("toggle-off");
       var toggleText = document.getElementById("toggle-text");
@@ -1573,7 +1559,7 @@ document.addEventListener("DOMContentLoaded", function () {
       if (!toggleState) {
         toggleState = "enabled";
         var state = {};
-        state[currentUrl] = "enabled";
+        state[domain] = "enabled";
         chrome.storage.sync.set(state);
       }
 
@@ -1599,7 +1585,8 @@ function toggleButton() {
 
   // Get the current tab's URL
   chrome.tabs.query({ active: true, currentWindow: true }, function (tabs) {
-    var currentUrl = tabs[0].url;
+    var currentUrl = new URL(tabs[0].url);
+    var domain = currentUrl.hostname; // Extract the domain part
 
     // Toggle the button and text based on the current state
     if (onButton.style.display === "none") {
@@ -1610,7 +1597,7 @@ function toggleButton() {
 
       // Save the state to Chrome storage
       var state = {};
-      state[currentUrl] = "enabled";
+      state[domain] = "enabled";
       chrome.storage.sync.set(state);
     } else {
       onButton.style.display = "none";
@@ -1620,7 +1607,7 @@ function toggleButton() {
 
       // Save the state to Chrome storage
       var state = {};
-      state[currentUrl] = "disabled";
+      state[domain] = "disabled";
       chrome.storage.sync.set(state);
     }
   });
@@ -1633,13 +1620,14 @@ const radioInputs = document.querySelectorAll('input[type="radio"]');
 function updateBorders() {
   // Remove border from all fieldset items
   document.querySelectorAll(".fieldset-item").forEach((item) => {
-    item.style.border = "1px solid #8eace6";
+    item.style.border = ".5px solid #c2c8ce";
+    item.style.padding = "2px";
   });
 
   // Add border to the selected fieldset item
   const checkedRadio = document.querySelector('input[type="radio"]:checked');
   if (checkedRadio) {
-    checkedRadio.closest(".fieldset-item").style.border = "4px solid #537FE7";
+    checkedRadio.closest(".fieldset-item").style.border = ".75px solid #133655";
   }
 }
 
@@ -1650,23 +1638,5 @@ document.addEventListener("DOMContentLoaded", updateBorders);
 radioInputs.forEach((radio) => {
   radio.addEventListener("change", updateBorders);
 });
-
-// function toggleButton() {
-//   var onButton = document.getElementById("toggle-on");
-//   var offButton = document.getElementById("toggle-off");
-//   var toggleText = document.getElementById("toggle-text");
-
-//   if (onButton.style.display === "none") {
-//     onButton.style.display = null;
-//     offButton.style.display = "none";
-//     toggleText.innerHTML = "ENABLED";
-//     toggleText.style.color = "green";
-//   } else {
-//     onButton.style.display = "none";
-//     offButton.style.display = null;
-//     toggleText.innerHTML = "DISABLED";
-//     toggleText.style.color = "red";
-//   }
-// }
 
 loadUI();

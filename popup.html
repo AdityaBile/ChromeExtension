@@ -12,17 +12,15 @@
     <!-- <script type="text/JavaScript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js" ></script> -->
   </head>
   <body class="back">
-    <div class="content" id="headerImage" style="font-size: 16px;font-weight:bolder; color: #8d8d8d;padding-bottom:0.5rem">
-      &nbsp;&nbsp;<img
+    <div class="content" id="headerImage" style="font-size: 16px;font-weight:bolder; color: #8d8d8d;padding-bottom:.5rem">
+      &nbsp;<img
         src="/images/epicsmall.png"
         align="center"
         height="35"
-        />&nbsp;&nbsp;Epic's encrypted proxy / VPN
+        />
+        &nbsp;Epic's Encrypted Proxy / VPN
     </div>
-    <div id="invalidUrlDiv">
-      <p>Please Open Valid Website 
-      </p>
-    </div>
+
     <div id="agreeTermsConditions" class="agreeTermsConditions container" >
       <head>
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -30,21 +28,20 @@
         <link rel="stylesheet" href="info.css" />
       </head>
       <div>
+        <br><br>
         <p>
-          Dear Epic Users, our encrypted proxy / VPN over the past ten years
-          without fail has protected us on over a trillion website visits. It's
-          gotten expensive to operate our network which is powered by 100s of
-          servers around the world, and we've been facing security challenges
-          due to attacks and bot abuse. In order to maintain the robust
-          performance and security of the proxy network, we need to store &
-          analyze some anonymized data but never any IP or personal information.
-          We work with third parties to both power and analyze our network and
-          its usage e.g. the encrypted proxy / VPN servers that we exclusively
+          Dear Epic Users, our encrypted proxy / VPN has protected us for over ten years on over a trillion website visits. It's
+          gotten expensive to operate our network which is powered by hundreds of
+          servers around the world.  We've faced security challenges
+          from attacks and bots. In order to maintain the
+          performance and security of the encrypted proxy network, we need to store, 
+          analyze and share some anonymized data, but never any IP or personal information.
+          We work with third parties to power and analyze our network and
+          its anonymized data.  For example, the encrypted proxy / VPN servers that we exclusively
           operate are hosted by third party data centers around the world. The
           excellent news is that our encrypted proxy network will continue to be
-          free, fast and robust, and that we welcome four more countries into
-          our network! Please read our terms & conditions and privacy policy for
-          more detailed information.
+          free, fast and robust, and that we welcome four more countries (Brazil, Australia, Japan & Korea) into
+          our network.
           Please read our
           <a href="https://epicbrowser.com/tou" target="_blank"
             ><span>terms & conditions</span></a
@@ -53,7 +50,7 @@
           <a href="https://epicbrowser.com/privacy-policy" target="_blank"
             ><span>privacy policy</span></a
             >
-          for more detailed information.
+          for full details.
         </p>
       </div>
       <div class="action-btn">
@@ -101,17 +98,20 @@
         <br />
         <div class="button-proxy" style="margin-top: 0px;">
           <div class="button" id="plugins" style="font-size: 24px;">
-            <span id="plugins_N" ><img src="./images/on_button.png" alt="On Button"/></span>
-            <span id="plugins_Y" style="display: none;"><img src="./images/off_button.png" alt="Off Button"/></span>
+            <span id="plugins_Y" ><img src="./images/off_button.png" alt="On Button"/></span>
+            <span id="plugins_N" style="display: none;"><img src="./images/on_button.png" alt="Off Button"/></span>
           </div>
           <div class="sym-hidden-reflex-proxy-popup-inner">
+
+
+            <span id="currentDomainControls" >
             <div class="toggle-item-label">
               <div id="current-domain-name"></div>
             </div>
             <div class="sym-proxy-whitelist">
               <div class="toggleControl" style="display: flex;">
                 <div class="toggle-item">
-                  <div class="proxy-text" id="toggle-text" style="color: green; font-size: medium; font-weight: bold;">ENABLED </div>
+                  <div class="proxy-text" id="toggle-text" style="color: green; font-size: medium; font-weight: bold; width: 4.5rem;">ENABLED </div>
                 </div>
                 <div class="toggle-item-yes-no">
                   <div  class="toggle-item-button selected toggle-off">
@@ -124,6 +124,7 @@
               </div>
              
             </div>
+          </span>
             <div class="proxy-text mr-2" id="link-whitelisted-sites" class="link-normal proxy-text" style='cursor:"pointer"'>all whitelisted sites</div>
           </div>
         </div>
